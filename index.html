@@ -194,7 +194,10 @@
     <div class="btn-row" style="flex-direction:column;gap:10px;margin-top:16px;">
       <button class="btn" id="pairCreateBtn">🆕 我是第一個人，建立新空間</button>
       <button class="btn ghost" id="pairJoinShowBtn">🔗 我要加入對方的空間（輸入配對碼）</button>
+      <button class="btn ghost sm" id="pairTestBtn">🔍 先測試一下能不能連線</button>
     </div>
+    <pre id="pairTestResult" style="display:none;white-space:pre-wrap;text-align:left;font-size:12px;background:#fff;border-radius:12px;padding:10px;margin-top:10px;font-family:'Noto Sans TC';"></pre>
+    <div id="pairErrorBox" style="display:none;background:#FFE3DC;color:var(--coral-deep);border-radius:12px;padding:10px;margin-top:10px;font-size:12px;text-align:left;white-space:pre-wrap;"></div>
     <div id="pairJoinBox" style="display:none;margin-top:14px;text-align:left;">
       <div class="field-row"><label>輸入對方給你的配對碼</label><input type="text" id="pairCodeInput" placeholder="例如 8f2a91.c73db0"></div>
       <button class="btn" id="pairJoinBtn" style="width:100%;">加入</button>
@@ -205,7 +208,7 @@
       <button class="btn sm" id="pairCopyBtn" style="margin-top:8px;width:100%;">📋 複製配對碼</button>
       <button class="btn sm ghost" id="pairContinueBtn" style="margin-top:8px;width:100%;">完成，進入App →</button>
     </div>
-    <p style="font-size:11px;color:var(--choco-soft);margin-top:16px;">小提醒：這個同步功能是透過一個免登入的公開雲端小工具實現，請兩人都用「同一個網址」打開這個頁面（直接互傳檔案在某些手機瀏覽器可能連不上網路儲存，建議改成host到一個網址上，例如GitHub Pages，再用同一個連結打開）。</p>
+    <p style="font-size:11px;color:var(--choco-soft);margin-top:16px;">小提醒：如果上面顯示連線失敗，很可能是因為直接打開下載的檔案（網址列顯示 file:// 開頭）時，手機瀏覽器會擋住雲端同步的網路請求。最快的解法：把這個 .html 檔案拖到 <b>host-html.com</b> 或 <b>oneclicklive.app</b>（兩個都免註冊、免費，拖檔案或貼程式碼就會給你一個 https 開頭的網址），兩人都改用那個網址打開，就能正常同步了。</p>
   </div>
 </div>
 
@@ -421,27 +424,66 @@ function clearPairFromLocal(){
   try{ localStorage.removeItem(PAIR_KEY); }catch(e){}
 }
 async function remoteCreate(initialState){
-  const res = await fetch('https://api.jsonstorage.net/v1/json', {
-    method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(initialState)
-  });
-  if(!res.ok) throw new Error('create failed');
+  let res;
+  try{
+    res = await fetch('https://api.jsonstorage.net/v1/json', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(initialState)
+    });
+  }catch(networkErr){
+    throw new Error('NETWORK: '+networkErr.message);
+  }
+  if(!res.ok){
+    const txt = await res.text().catch(function(){ return ''; });
+    throw new Error('HTTP '+res.status+' '+txt);
+  }
   const data = await res.json();
+  if(!data || !data.uri) throw new Error('UNEXPECTED RESPONSE: '+JSON.stringify(data));
   const parts = data.uri.split('/');
   const itemId = parts.pop();
   const userId = parts.pop();
   return {userId, itemId};
 }
 async function remoteGet(u,i){
-  const res = await fetch('https://api.jsonstorage.net/v1/json/'+u+'/'+i, {cache:'no-store'});
-  if(!res.ok) throw new Error('not found');
+  let res;
+  try{
+    res = await fetch('https://api.jsonstorage.net/v1/json/'+u+'/'+i, {cache:'no-store'});
+  }catch(networkErr){
+    throw new Error('NETWORK: '+networkErr.message);
+  }
+  if(!res.ok) throw new Error('HTTP '+res.status);
   return await res.json();
 }
 async function remotePut(u,i,obj){
-  const res = await fetch('https://api.jsonstorage.net/v1/json/'+u+'/'+i, {
-    method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(obj)
-  });
-  if(!res.ok) throw new Error('update failed');
+  let res;
+  try{
+    res = await fetch('https://api.jsonstorage.net/v1/json/'+u+'/'+i, {
+      method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(obj)
+    });
+  }catch(networkErr){
+    throw new Error('NETWORK: '+networkErr.message);
+  }
+  if(!res.ok) throw new Error('HTTP '+res.status);
   return await res.json();
+}
+async function testConnectivity(){
+  const box = document.getElementById('pairTestResult');
+  box.style.display = 'block';
+  box.textContent = '測試中...';
+  try{
+    const r = await fetch('https://api.jsonstorage.net/v1/json', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ping:true})
+    });
+    if(r.ok){
+      box.textContent = '✅ 連線正常（HTTP '+r.status+'），可以放心建立空間';
+      box.style.color = '#3D9270';
+    } else {
+      box.textContent = '⚠️ 連到伺服器了，但回應異常：HTTP '+r.status;
+      box.style.color = '#C9748A';
+    }
+  }catch(e){
+    box.textContent = '❌ 連線失敗：'+e.message+'\n\n這通常代表瀏覽器擋住了從本機檔案發出的網路請求，請改用網址方式打開這個頁面（見下方提醒）。';
+    box.style.color = '#C9748A';
+  }
 }
 
 function ensureStateShape(){
@@ -1268,6 +1310,7 @@ document.getElementById('removeAvatarBtn').addEventListener('click', async funct
 
 /* ===================== 配對流程 ===================== */
 document.getElementById('pairCreateBtn').addEventListener('click', async function(){
+  document.getElementById('pairErrorBox').style.display = 'none';
   const init = DEFAULT_STATE(); init.updatedAt = Date.now();
   try{
     const {userId,itemId} = await remoteCreate(init);
@@ -1276,12 +1319,18 @@ document.getElementById('pairCreateBtn').addEventListener('click', async functio
     state = init;
     document.getElementById('pairCodeDisplay').textContent = userId+'.'+itemId;
     document.getElementById('pairResultBox').style.display = 'block';
-  }catch(e){ showToast('建立失敗，請檢查網路連線後再試一次'); }
+  }catch(e){
+    const box = document.getElementById('pairErrorBox');
+    box.style.display = 'block';
+    box.textContent = '建立失敗，詳細原因：\n'+e.message+'\n\n請把這段文字截圖給我，我可以幫你看是什麼問題。';
+  }
 });
+document.getElementById('pairTestBtn').addEventListener('click', testConnectivity);
 document.getElementById('pairJoinShowBtn').addEventListener('click', function(){
   document.getElementById('pairJoinBox').style.display = 'block';
 });
 document.getElementById('pairJoinBtn').addEventListener('click', async function(){
+  document.getElementById('pairErrorBox').style.display = 'none';
   const code = document.getElementById('pairCodeInput').value.trim();
   const dot = code.indexOf('.');
   if(dot<0){ showToast('配對碼格式不對，要包含一個小數點'); return; }
@@ -1293,7 +1342,11 @@ document.getElementById('pairJoinBtn').addEventListener('click', async function(
     state = remote;
     ensureStateShape();
     enterApp();
-  }catch(e){ showToast('找不到這個配對碼，請確認是否複製完整'); }
+  }catch(e){
+    const box = document.getElementById('pairErrorBox');
+    box.style.display = 'block';
+    box.textContent = '加入失敗，詳細原因：\n'+e.message+'\n\n請確認配對碼有沒有複製完整，或把這段文字截圖給我。';
+  }
 });
 document.getElementById('pairCopyBtn').addEventListener('click', function(){
   const text = document.getElementById('pairCodeDisplay').textContent;
