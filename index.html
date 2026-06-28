@@ -8,17 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#FFF8EC;
-    --cream-deep:#FCEFD9;
-    --mint:#BFE8DC;
-    --mint-deep:#8FCDBB;
-    --coral:#FF9B85;
-    --coral-deep:#F0775D;
-    --choco:#6B4F3F;
-    --choco-soft:#9A8170;
-    --gold:#FFD66B;
-    --track:#F6E3C0;
-    --grass:#E3F2DD;
+    --cream:#FFF8EC; --cream-deep:#FCEFD9; --mint:#BFE8DC; --mint-deep:#8FCDBB;
+    --coral:#FF9B85; --coral-deep:#F0775D; --choco:#6B4F3F; --choco-soft:#9A8170;
+    --gold:#FFD66B; --track:#F6E3C0; --grass:#E3F2DD;
     --card-shadow: 0 6px 0 rgba(107,79,63,0.08), 0 10px 24px rgba(107,79,63,0.10);
   }
   *{box-sizing:border-box;}
@@ -53,15 +45,6 @@
   section.active{display:block;}
   @keyframes fadeIn{from{opacity:0;transform:translateY(6px);} to{opacity:1;transform:none;}}
   h2.section-title{font-size:19px; margin:6px 0 12px; display:flex; align-items:center; gap:6px;}
-
-  /* weigh-in card */
-  .weighin-card{background:#fff;border-radius:22px;padding:14px;box-shadow:var(--card-shadow);margin-bottom:14px;}
-  .weighin-card h3{margin:0 0 10px;font-size:14.5px;}
-  .weighin-row{display:flex;justify-content:space-between;gap:10px;}
-  .weighin-slot{flex:1;background:var(--cream);border-radius:16px;padding:10px;text-align:center;}
-  .weighin-slot .who{font-size:12.5px;font-weight:700;margin-bottom:4px;}
-  .weighin-slot .st{font-size:11.5px;color:var(--choco-soft);margin-bottom:6px;}
-  .weighin-slot .st.done{color:#3D9270;font-weight:700;}
 
   .race-card{background:#fff; border-radius:26px; padding:14px 14px 10px; box-shadow:var(--card-shadow); position:relative; overflow:hidden;}
   .race-stage{position:relative; border-radius:20px; overflow:hidden; padding:14px 0 6px;background:linear-gradient(180deg, var(--grass) 0%, var(--grass) 10%, var(--track) 10%, var(--track) 100%);}
@@ -111,7 +94,6 @@
   .btn:disabled{opacity:.5; cursor:not-allowed;}
   .btn-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
 
-  /* history */
   .history-card{background:#fff;border-radius:22px;padding:14px;margin-top:14px;box-shadow:var(--card-shadow);}
   .history-card h3{margin:0 0 10px;font-size:14.5px;}
   .history-item{background:var(--cream);border-radius:16px;padding:12px;margin-bottom:10px;font-size:12.5px;line-height:1.6;}
@@ -140,7 +122,7 @@
   .ex-item img{width:50px;height:50px;border-radius:12px;object-fit:cover;flex:0 0 auto;background:#eee;}
   .ex-item .meta{flex:1;font-size:12px;}
   .ex-item .meta .who{font-weight:700;font-size:13px;}
-  .ex-item .meta .note{color:var(--choco-soft);margin-top:2px;}
+  .ex-item .meta .note{color:var(--choco-soft);margin-top:2px;word-break:break-word;}
   .vid-badge{display:inline-block;background:var(--coral);color:#fff;font-size:10px;border-radius:8px;padding:1px 6px;margin-left:4px;}
 
   .water-cup{width:34px;height:40px;border:3px solid #7FC4DE; border-radius:0 0 12px 12px;position:relative; background:var(--cream); overflow:hidden;}
@@ -155,7 +137,6 @@
   .card-item .info b{display:block;font-size:13.5px;}
   .card-item .info span{font-size:11px;color:var(--choco-soft);}
 
-  /* avatar editor */
   .checker-bg{
     background-image: linear-gradient(45deg, #ddd 25%, transparent 25%), linear-gradient(-45deg, #ddd 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ddd 75%), linear-gradient(-45deg, transparent 75%, #ddd 75%);
     background-size:18px 18px; background-position:0 0,0 9px,9px -9px,-9px 0; background-color:#f5f5f5;
@@ -163,7 +144,6 @@
   }
   #avatarCanvas{border-radius:12px; touch-action:none; display:block; max-width:100%; cursor:crosshair;}
   #eraseModeBtn.mode-active, #restoreModeBtn.mode-active{background:var(--coral-deep);color:#fff;box-shadow:0 3px 0 rgba(107,79,63,0.2);}
-  .avatar-mini{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--cream-deep);vertical-align:middle;}
 
   nav{position:fixed; bottom:0; left:50%; transform:translateX(-50%);width:100%; max-width:430px; background:#fff; display:flex; justify-content:space-around;padding:8px 4px 10px; box-shadow:0 -4px 18px rgba(107,79,63,0.10); z-index:50;border-radius:22px 22px 0 0;}
   nav button{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;color:var(--choco-soft);font-weight:700;cursor:pointer;flex:1;}
@@ -182,43 +162,16 @@
   .field-row input,.field-row textarea{width:100%;padding:9px 10px;border-radius:10px;border:1.5px solid var(--cream-deep);font-size:14px;font-family:'Noto Sans TC';}
   .field-row input:focus,.field-row textarea:focus{outline:none;border-color:var(--coral);}
   .thumb-preview{width:70px;height:70px;border-radius:14px;object-fit:cover;margin:8px auto;display:block;background:#eee;}
+  .code-box{font-family:monospace;font-size:11px;background:var(--cream);padding:8px;border-radius:10px;word-break:break-all;max-height:90px;overflow-y:auto;text-align:left;}
 </style>
 </head>
 <body>
-
-<div id="pairScreen" style="position:fixed;inset:0;background:var(--cream);z-index:2000;display:none;align-items:center;justify-content:center;padding:24px;overflow-y:auto;">
-  <div style="max-width:380px;width:100%;text-align:center;">
-    <div style="font-size:50px;">🐻💌🐻</div>
-    <h2 class="display">建立雙人空間</h2>
-    <p style="font-size:13px;color:var(--choco-soft);">兩支手機要連到「同一個空間」才能即時看到對方的紀錄。其中一邊先按「建立新空間」，把產生的配對碼傳給另一半，另一半再按「加入對方的空間」貼上即可。</p>
-    <div class="btn-row" style="flex-direction:column;gap:10px;margin-top:16px;">
-      <button class="btn" id="pairCreateBtn">🆕 我是第一個人，建立新空間</button>
-      <button class="btn ghost" id="pairJoinShowBtn">🔗 我要加入對方的空間（輸入配對碼）</button>
-      <button class="btn ghost sm" id="pairTestBtn">🔍 先測試一下能不能連線</button>
-    </div>
-    <pre id="pairTestResult" style="display:none;white-space:pre-wrap;text-align:left;font-size:12px;background:#fff;border-radius:12px;padding:10px;margin-top:10px;font-family:'Noto Sans TC';"></pre>
-    <div id="pairErrorBox" style="display:none;background:#FFE3DC;color:var(--coral-deep);border-radius:12px;padding:10px;margin-top:10px;font-size:12px;text-align:left;white-space:pre-wrap;"></div>
-    <div id="pairJoinBox" style="display:none;margin-top:14px;text-align:left;">
-      <div class="field-row"><label>輸入對方給你的配對碼</label><input type="text" id="pairCodeInput" placeholder="例如 8f2a91.c73db0"></div>
-      <button class="btn" id="pairJoinBtn" style="width:100%;">加入</button>
-    </div>
-    <div id="pairResultBox" style="display:none;margin-top:14px;background:#fff;border-radius:16px;padding:14px;text-align:left;">
-      <div style="font-size:12.5px;color:var(--choco-soft);margin-bottom:6px;">把這串配對碼傳給另一半，請對方點「加入對方的空間」貼上：</div>
-      <div id="pairCodeDisplay" style="font-family:monospace;font-weight:700;font-size:15px;background:var(--cream);padding:8px;border-radius:10px;word-break:break-all;text-align:center;"></div>
-      <button class="btn sm" id="pairCopyBtn" style="margin-top:8px;width:100%;">📋 複製配對碼</button>
-      <button class="btn sm ghost" id="pairContinueBtn" style="margin-top:8px;width:100%;">完成，進入App →</button>
-    </div>
-    <p style="font-size:11px;color:var(--choco-soft);margin-top:16px;">小提醒：如果上面顯示連線失敗，很可能是因為直接打開下載的檔案（網址列顯示 file:// 開頭）時，手機瀏覽器會擋住雲端同步的網路請求。最快的解法：把這個 .html 檔案拖到 <b>host-html.com</b> 或 <b>oneclicklive.app</b>（兩個都免註冊、免費，拖檔案或貼程式碼就會給你一個 https 開頭的網址），兩人都改用那個網址打開，就能正常同步了。</p>
-  </div>
-</div>
-
 <div id="app">
 
   <header>
     <div class="brand"><span class="logo">🐻</span><h1 class="display">趴趴熊大作戰</h1></div>
     <div style="display:flex; align-items:center; gap:8px;">
-      <span id="syncStatus" style="font-size:11px;font-weight:700;"></span>
-      <div class="bell" id="settingsBtn" title="連線與備份設定">
+      <div class="bell" id="settingsBtn" title="設定與同步">
         <svg viewBox="0 0 24 24" fill="none" stroke="#6B4F3F" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
       </div>
       <div class="bell" id="bellBtn">
@@ -237,9 +190,9 @@
   <section id="tab-board" class="active">
     <h2 class="section-title">🏁 雙人賽跑看板</h2>
 
-    <div class="weighin-card">
-      <h3>📸 今日體重打卡</h3>
-      <div class="weighin-row" id="weighinRow"></div>
+    <div class="card-block" style="margin-bottom:14px;">
+      <h3 style="margin:0 0 8px;font-size:13.5px;">📡 雙手機同步</h3>
+      <p style="font-size:11.5px;color:var(--choco-soft);margin:0 0 8px;">資料存在這支手機裡。想跟對方對齊進度時，去右上角 ⚙️ 設定，產生一段「同步碼」傳給對方，對方貼上即可合併雙方紀錄。</p>
     </div>
 
     <div class="race-card">
@@ -248,6 +201,11 @@
         <div class="lane" id="laneB"><div class="lane-line"></div><div class="flag-start">🚩</div><div class="flag-end">🏁</div><div class="runner-pos" id="runnerB"></div></div>
       </div>
       <div class="status-row" id="statusRow"></div>
+    </div>
+
+    <div class="card-block" style="margin-top:14px;">
+      <h3>📸 今日體重打卡</h3>
+      <div class="piggy-row" id="weighinRow"></div>
     </div>
 
     <div class="piggy-card">
@@ -303,7 +261,7 @@
       <h3>新增一筆運動紀錄</h3>
       <label class="upload-zone" id="exUploadZone">📷 拍照 / 錄一小段影片，記錄你的運動！<input type="file" accept="image/*,video/*" id="exInput"></label>
       <img id="exPreview" class="thumb-preview" style="display:none;">
-      <textarea class="note-input" id="exNote" placeholder="寫點什麼吧～今天做了什麼運動？感覺如何？"></textarea>
+      <textarea class="note-input" id="exNote" maxlength="300" placeholder="寫點什麼吧～今天做了什麼運動？感覺如何？"></textarea>
       <div class="btn-row" style="margin-top:10px;">
         <button class="btn" id="exSubmitBtn">✅ 送出打卡</button>
         <button class="btn ghost" id="exRemindBtn">🔔 提醒對方運動</button>
@@ -343,7 +301,7 @@
     <h2 class="section-title">👤 自訂角色</h2>
     <div class="card-block">
       <h3>上傳照片，自動去背</h3>
-      <p style="font-size:11.5px;color:var(--choco-soft);margin-top:-4px;">上傳一張背景單純的照片效果最好（例如站在白牆前）。去背是在你的瀏覽器裡本機運算，照片不會上傳到任何伺服器。</p>
+      <p style="font-size:11.5px;color:var(--choco-soft);margin-top:-4px;">去背是在你的瀏覽器裡本機運算，照片不會上傳到任何伺服器。</p>
       <label class="upload-zone" id="avatarUploadZone">📷 點我上傳照片<input type="file" accept="image/*" id="avatarInput"></label>
       <div id="avatarEditorWrap" style="display:none;margin-top:12px;">
         <div class="checker-bg" id="checkerWrap"><canvas id="avatarCanvas" width="300" height="300"></canvas></div>
@@ -386,173 +344,131 @@
 <div id="modalOverlay"><div id="modalBox"></div></div>
 
 <script>
+/* ===================== 安全工具 ===================== */
+function escapeHtml(str){
+  if(str==null) return '';
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function clampNum(n, min, max, fallback){
+  n = Number(n);
+  if(!isFinite(n)) return fallback;
+  return Math.min(max, Math.max(min, n));
+}
+function isValidWeight(n){
+  return isFinite(n) && n >= 20 && n <= 400;
+}
+
+/* ===================== 資料層（本機儲存，不依賴任何雲端服務） ===================== */
+const LOCAL_KEY = 'lovefit_state_v3';
 let currentUser = 'A';
 let state = null;
 let editingUser = null;
-let exFile = {thumb:null, isVideo:false};
 
 const DEFAULT_STATE = () => ({
   users:{
-    A:{name:'趴趴', dbsToday:0, cards:['midnight','dishwash','shield','combo'], startWeight:null, currentWeight:null, goalWeight:null},
-    B:{name:'糰糰', dbsToday:0, cards:['midnight','dishwash','shield','combo'], startWeight:null, currentWeight:null, goalWeight:null}
+    A:{name:'趴趴', dbsToday:0, cards:['midnight','dishwash','shield','combo'], startWeight:null, currentWeight:null, goalWeight:null, _t:0},
+    B:{name:'糰糰', dbsToday:0, cards:['midnight','dishwash','shield','combo'], startWeight:null, currentWeight:null, goalWeight:null, _t:0}
   },
-  foodLogs:[],
-  exerciseLogs:[],
-  weighIns:[],
-  notifications:[],
-  water:{A:0,B:0},
-  fasting:{A:null,B:null},
-  weeklyReward:'',
-  history:[],
+  foodLogs:[], exerciseLogs:[], weighIns:[], notifications:[],
+  water:{A:0,B:0}, fasting:{A:null,B:null}, weeklyReward:'', history:[],
   updatedAt:0
 });
 
-/* ===================== 雲端同步層（取代原本只在Claude.ai內有效的window.storage） =====================
-   原理：用免登入的公開JSON儲存服務(jsonstorage.net)當作兩支手機共用的「雲端硬碟」。
-   兩支手機只要連到同一組 userId/itemId（也就是「配對碼」），就能讀寫到同一份資料。 */
-let remoteUserId = null, remoteItemId = null;
-let syncing = false;
-const PAIR_KEY = 'lovefit_pair_v1';
-
-function loadPairFromLocal(){
-  try{ const raw = localStorage.getItem(PAIR_KEY); return raw ? JSON.parse(raw) : null; }catch(e){ return null; }
+function ensureStateShape(s){
+  if(!s.users) s.users = DEFAULT_STATE().users;
+  ['A','B'].forEach(function(u){
+    if(!s.users[u]) s.users[u] = DEFAULT_STATE().users[u];
+    if(s.users[u]._t===undefined) s.users[u]._t = 0;
+  });
+  if(!s.weighIns) s.weighIns=[];
+  if(!s.exerciseLogs) s.exerciseLogs=[];
+  if(!s.foodLogs) s.foodLogs=[];
+  if(!s.notifications) s.notifications=[];
+  if(!s.history) s.history=[];
+  if(!s.water) s.water={A:0,B:0};
+  if(!s.fasting) s.fasting={A:null,B:null};
+  if(s.weeklyReward===undefined) s.weeklyReward='';
+  if(!s.updatedAt) s.updatedAt=0;
+  return s;
 }
-function savePairToLocal(u,i){
-  try{ localStorage.setItem(PAIR_KEY, JSON.stringify({u,i})); }catch(e){}
-}
-function clearPairFromLocal(){
-  try{ localStorage.removeItem(PAIR_KEY); }catch(e){}
-}
-async function remoteCreate(initialState){
-  let res;
-  try{
-    res = await fetch('https://api.jsonstorage.net/v1/json', {
-      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(initialState)
-    });
-  }catch(networkErr){
-    throw new Error('NETWORK: '+networkErr.message);
-  }
-  if(!res.ok){
-    const txt = await res.text().catch(function(){ return ''; });
-    throw new Error('HTTP '+res.status+' '+txt);
-  }
-  const data = await res.json();
-  if(!data || !data.uri) throw new Error('UNEXPECTED RESPONSE: '+JSON.stringify(data));
-  const parts = data.uri.split('/');
-  const itemId = parts.pop();
-  const userId = parts.pop();
-  return {userId, itemId};
-}
-async function remoteGet(u,i){
-  let res;
-  try{
-    res = await fetch('https://api.jsonstorage.net/v1/json/'+u+'/'+i, {cache:'no-store'});
-  }catch(networkErr){
-    throw new Error('NETWORK: '+networkErr.message);
-  }
-  if(!res.ok) throw new Error('HTTP '+res.status);
-  return await res.json();
-}
-async function remotePut(u,i,obj){
-  let res;
-  try{
-    res = await fetch('https://api.jsonstorage.net/v1/json/'+u+'/'+i, {
-      method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(obj)
-    });
-  }catch(networkErr){
-    throw new Error('NETWORK: '+networkErr.message);
-  }
-  if(!res.ok) throw new Error('HTTP '+res.status);
-  return await res.json();
-}
-async function testConnectivity(){
-  const box = document.getElementById('pairTestResult');
-  box.style.display = 'block';
-  box.textContent = '測試中...';
-  try{
-    const r = await fetch('https://api.jsonstorage.net/v1/json', {
-      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({hello:'world'})
-    });
-    const bodyText = await r.text().catch(function(){ return '(無法讀取回應內容)'; });
-    if(r.ok){
-      box.textContent = '✅ 連線正常（HTTP '+r.status+'），可以放心建立空間\n伺服器回應：'+bodyText;
-      box.style.color = '#3D9270';
-    } else {
-      box.textContent = '⚠️ 連到伺服器了，但回應異常：HTTP '+r.status+'\n伺服器回應內容：\n'+bodyText;
-      box.style.color = '#C9748A';
-    }
-  }catch(e){
-    box.textContent = '❌ 連線失敗：'+e.message+'\n\n這通常代表瀏覽器擋住了從本機檔案發出的網路請求，請改用網址方式打開這個頁面（見下方提醒）。';
-    box.style.color = '#C9748A';
-  }
-}
-
-function ensureStateShape(){
-  if(!state.weighIns) state.weighIns=[];
-  if(!state.exerciseLogs) state.exerciseLogs=[];
-  if(!state.history) state.history=[];
-  if(state.weeklyReward===undefined) state.weeklyReward='';
-  if(!state.updatedAt) state.updatedAt=0;
-}
-
 async function loadState(){
   try{
-    state = await remoteGet(remoteUserId, remoteItemId);
-    ensureStateShape();
-    updateSyncUI(true);
+    const raw = localStorage.getItem(LOCAL_KEY);
+    state = raw ? ensureStateShape(JSON.parse(raw)) : DEFAULT_STATE();
   }catch(e){
     state = DEFAULT_STATE();
-    updateSyncUI(false);
   }
 }
 async function saveState(){
   state.updatedAt = Date.now();
-  try{
-    await remotePut(remoteUserId, remoteItemId, state);
-    updateSyncUI(true);
-  }catch(e){
-    console.error(e);
-    updateSyncUI(false);
-    showToast('同步失敗，可能是網路問題，這筆紀錄先留在你手機上，等等會自動重試');
-  }
+  try{ localStorage.setItem(LOCAL_KEY, JSON.stringify(state)); }catch(e){ console.error(e); }
 }
-async function pollRemote(){
-  if(!remoteUserId || syncing) return;
-  syncing = true;
-  try{
-    const remote = await remoteGet(remoteUserId, remoteItemId);
-    if(remote && (remote.updatedAt||0) > (state.updatedAt||0)){
-      state = remote;
-      ensureStateShape();
-      renderAll();
-      showToast('已同步對方的最新紀錄 🔄');
-    }
-    updateSyncUI(true);
-  }catch(e){
-    updateSyncUI(false);
-  }
-  syncing = false;
+function touchUser(u){
+  state.users[u]._t = Date.now();
 }
-function updateSyncUI(ok){
-  const el = document.getElementById('syncStatus');
-  if(!el) return;
-  el.textContent = ok ? '🟢 已連線' : '🔴 離線中';
-  el.style.color = ok ? '#3D9270' : '#C9748A';
-}
-
 function other(u){ return u==='A' ? 'B' : 'A'; }
 function pushNotif(to, text){
-  state.notifications.unshift({id:Date.now()+Math.random(), to, text, ts:Date.now(), read:false});
+  state.notifications.unshift({id:Date.now()+Math.random(), to, text:String(text), ts:Date.now(), read:false});
+  if(state.notifications.length>200) state.notifications.length = 200;
 }
 function showToast(msg){
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
   clearTimeout(t._timer);
-  t._timer = setTimeout(()=>t.classList.remove('show'), 2600);
+  t._timer = setTimeout(function(){ t.classList.remove('show'); }, 2600);
 }
 function todayStr(){ return new Date().toDateString(); }
 function countBy(u, arr){ return arr.filter(function(x){ return x.user===u; }).length; }
+
+/* ===================== 合併兩份資料（手動同步用） ===================== */
+function mergeStates(local, remote){
+  const merged = JSON.parse(JSON.stringify(local));
+  ['notifications','foodLogs','exerciseLogs','weighIns','history'].forEach(function(key){
+    const map = new Map();
+    (local[key]||[]).forEach(function(item){ if(item && item.id!=null) map.set(String(item.id), item); });
+    (remote[key]||[]).forEach(function(item){ if(item && item.id!=null && !map.has(String(item.id))) map.set(String(item.id), item); });
+    const arr = Array.from(map.values());
+    arr.sort(function(a,b){ return (b.ts||b.endTs||0)-(a.ts||a.endTs||0); });
+    merged[key] = arr;
+  });
+  ['A','B'].forEach(function(u){
+    const lu = (local.users && local.users[u]) || {_t:0};
+    const ru = (remote.users && remote.users[u]) || {_t:0};
+    merged.users[u] = ((ru._t||0) > (lu._t||0)) ? ru : lu;
+  });
+  merged.water = {
+    A: Math.max((local.water&&local.water.A)||0, (remote.water&&remote.water.A)||0),
+    B: Math.max((local.water&&local.water.B)||0, (remote.water&&remote.water.B)||0)
+  };
+  if((remote.updatedAt||0) > (local.updatedAt||0)){
+    merged.fasting = remote.fasting;
+    merged.weeklyReward = remote.weeklyReward;
+  }
+  merged.updatedAt = Date.now();
+  return ensureStateShape(merged);
+}
+function utf8ToB64(str){
+  return btoa(unescape(encodeURIComponent(str)));
+}
+function b64ToUtf8(b64){
+  return decodeURIComponent(escape(atob(b64)));
+}
+function generateSyncCode(){
+  return utf8ToB64(JSON.stringify(state));
+}
+function applySyncCode(code){
+  let parsed;
+  try{
+    parsed = JSON.parse(b64ToUtf8(code.trim()));
+  }catch(e){
+    throw new Error('這段同步碼讀不懂，請確認是否複製完整');
+  }
+  ensureStateShape(parsed);
+  state = mergeStates(state, parsed);
+}
 
 /* ===================== 原創趴趴熊 SVG ===================== */
 function bearSVG(variant, mood){
@@ -580,7 +496,6 @@ function bearSVG(variant, mood){
     +'<ellipse cx="9" cy="6" rx="3" ry="2" fill="#FFB6A8" opacity=".7"/>'
     +'</g></svg>';
 }
-
 function pigSVG(idSuffix, fillPct){
   fillPct = Math.max(0, Math.min(100, fillPct));
   const fillY = 100 - fillPct;
@@ -605,7 +520,6 @@ function pigSVG(idSuffix, fillPct){
     +'<circle cx="62" cy="50" r="2.2" fill="#5C4332"/>'
     +'</svg>';
 }
-
 function plantSVG(stage){
   const stages = [
     '<svg viewBox="0 0 70 80"><rect x="22" y="55" width="26" height="20" rx="4" fill="#E8C39E"/><path d="M35 55 q-4 -10 0 -16" stroke="#7FB7A3" stroke-width="4" fill="none" stroke-linecap="round"/></svg>',
@@ -635,7 +549,7 @@ function computeProgress(u){
 function flavorText(pct, hasData, isMine, u){
   const d = state.users[u];
   if(!hasData) return isMine ? '尚未設定體重，點我設定吧！' : '對方還沒開始存撲滿喔～';
-  if(isMine) return '目前 <b>'+d.currentWeight+'kg</b> → 目標 <b>'+d.goalWeight+'kg</b>（達成 '+pct.toFixed(0)+'%）';
+  if(isMine) return '目前 <b>'+escapeHtml(d.currentWeight)+'kg</b> → 目標 <b>'+escapeHtml(d.goalWeight)+'kg</b>（達成 '+pct.toFixed(0)+'%）';
   if(pct < 25) return '撲滿才剛開始存，靜悄悄的🐷';
   if(pct < 50) return '隱約聽到一點銅板聲了…';
   if(pct < 75) return '撲滿越來越有份量了！';
@@ -683,8 +597,8 @@ function renderBoard(){
   const xB = leftPct + (rightPct-leftPct)*pB.pct/100;
   document.getElementById('runnerA').style.left = xA+'%';
   document.getElementById('runnerB').style.left = xB+'%';
-  document.getElementById('runnerA').innerHTML = '<div class="runner-bob">'+runnerVisualHTML('A', pA.pct<5?'normal':'happy')+'</div><div class="shadow"></div><div class="name-tag">'+avatarIconHTML('A',14)+' '+A.name+'</div>';
-  document.getElementById('runnerB').innerHTML = '<div class="runner-bob">'+runnerVisualHTML('B', pB.pct<5?'normal':'happy')+'</div><div class="shadow"></div><div class="name-tag">'+avatarIconHTML('B',14)+' '+B.name+'</div>';
+  document.getElementById('runnerA').innerHTML = '<div class="runner-bob">'+runnerVisualHTML('A', pA.pct<5?'normal':'happy')+'</div><div class="shadow"></div><div class="name-tag">'+avatarIconHTML('A',14)+' '+escapeHtml(A.name)+'</div>';
+  document.getElementById('runnerB').innerHTML = '<div class="runner-bob">'+runnerVisualHTML('B', pB.pct<5?'normal':'happy')+'</div><div class="shadow"></div><div class="name-tag">'+avatarIconHTML('B',14)+' '+escapeHtml(B.name)+'</div>';
 
   const row = document.getElementById('statusRow');
   const diff = pA.pct - pB.pct;
@@ -716,7 +630,6 @@ function renderBoard(){
 function hasWeighedToday(u){
   return state.weighIns.some(function(w){ return w.user===u && new Date(w.ts).toDateString()===todayStr(); });
 }
-
 function renderWeighin(){
   const A = state.users.A, B = state.users.B;
   const slot = function(u, data){
@@ -726,8 +639,8 @@ function renderWeighin(){
     if(isMine){
       btn = done ? '<button class="btn sm ghost" disabled>✅ 今日已打卡</button>' : '<button class="btn sm" onclick="openWeighinModal()">📸 量體重打卡</button>';
     }
-    return '<div class="weighin-slot"><div class="who">'+avatarIconHTML(u,16)+' '+data.name+'</div>'
-      +'<div class="st '+(done?'done':'')+'">'+(done?'✅ 今日已打卡':'⏳ 今日尚未打卡')+'</div>'
+    return '<div class="piggy-slot"><div class="pig-name">'+avatarIconHTML(u,16)+' '+escapeHtml(data.name)+'</div>'
+      +'<div class="flavor '+(done?'done':'')+'" style="min-height:auto;">'+(done?'✅ 今日已打卡':'⏳ 今日尚未打卡')+'</div>'
       +btn+'</div>';
   };
   document.getElementById('weighinRow').innerHTML = slot('A',A) + slot('B',B);
@@ -742,7 +655,7 @@ function renderPiggy(pA, pB){
     const fillPct = p.hasData ? p.pct : 0;
     const editBtn = isMine ? '<button class="btn sm" onclick="openWeightModal(\''+u+'\')">'+(p.hasData?'✏️ 調整起始/目標':'🐷 設定體重目標')+'</button>' : '';
     return '<div class="piggy-slot">'
-      +'<div class="pig-name">'+avatarIconHTML(u,16)+' '+data.name+'</div>'
+      +'<div class="pig-name">'+avatarIconHTML(u,16)+' '+escapeHtml(data.name)+'</div>'
       +'<div class="pig-wrap" style="transform:scale('+scale.toFixed(2)+')">'+pigSVG(u, fillPct)+'</div>'
       +'<div class="flavor">'+flavorText(p.pct, p.hasData, isMine, u)+'</div>'
       +editBtn
@@ -774,12 +687,12 @@ function renderHistory(){
   area.innerHTML = state.history.map(function(h){
     const winText = h.winner==='A' ? '🐻 趴趴獲勝' : (h.winner==='B' ? '🐻 糰糰獲勝' : '不相上下');
     return '<div class="history-item">'
-      +'<div class="hd"><b>'+new Date(h.endTs).toLocaleDateString('zh-TW')+' 結算</b><span class="win-tag">'+winText+'</span></div>'
-      +'DBS：趴趴 '+h.scores.A+' 分 / 糰糰 '+h.scores.B+' 分<br>'
-      +'體重打卡：趴趴 '+h.weighInCount.A+' 次 / 糰糰 '+h.weighInCount.B+' 次<br>'
-      +'運動打卡：趴趴 '+h.exerciseCount.A+' 次 / 糰糰 '+h.exerciseCount.B+' 次　飲食打卡：趴趴 '+h.foodCount.A+' 次 / 糰糰 '+h.foodCount.B+' 次<br>'
+      +'<div class="hd"><b>'+escapeHtml(new Date(h.endTs).toLocaleDateString('zh-TW'))+' 結算</b><span class="win-tag">'+winText+'</span></div>'
+      +'DBS：趴趴 '+escapeHtml(h.scores.A)+' 分 / 糰糰 '+escapeHtml(h.scores.B)+' 分<br>'
+      +'體重打卡：趴趴 '+escapeHtml(h.weighInCount.A)+' 次 / 糰糰 '+escapeHtml(h.weighInCount.B)+' 次<br>'
+      +'運動打卡：趴趴 '+escapeHtml(h.exerciseCount.A)+' 次 / 糰糰 '+escapeHtml(h.exerciseCount.B)+' 次　飲食打卡：趴趴 '+escapeHtml(h.foodCount.A)+' 次 / 糰糰 '+escapeHtml(h.foodCount.B)+' 次<br>'
       +'減重達成率：趴趴 '+h.weightSnapshot.A.pct.toFixed(0)+'%　糰糰 '+h.weightSnapshot.B.pct.toFixed(0)+'%<br>'
-      +'🏆 獎勵：'+(h.reward || '（未設定）')
+      +'🏆 獎勵：'+escapeHtml(h.reward || '（未設定）')
       +'</div>';
   }).join('');
 }
@@ -791,7 +704,7 @@ function renderFood(){
     return;
   }
   list.innerHTML = state.foodLogs.slice(0,12).map(function(log){
-    const whoName = state.users[log.user].name;
+    const whoName = state.users[log.user] ? state.users[log.user].name : '';
     let stText = log.status==='pending' ? '審查中' : (log.status==='approved' ? '已核準 +5':'已退回 -10');
     let actions = '';
     if(log.status==='pending' && log.user !== currentUser){
@@ -799,7 +712,7 @@ function renderFood(){
     } else if(log.status==='pending'){
       actions = '<div class="food-actions" style="font-size:11px;color:var(--choco-soft);">等待對方審查</div>';
     }
-    return '<div class="food-item"><img src="'+log.thumb+'"><div class="meta"><div class="who">'+avatarIconHTML(log.user,16)+' '+whoName+'</div><div class="st '+log.status+'">'+stText+'</div></div>'+actions+'</div>';
+    return '<div class="food-item"><img src="'+log.thumb+'"><div class="meta"><div class="who">'+avatarIconHTML(log.user,16)+' '+escapeHtml(whoName)+'</div><div class="st '+log.status+'">'+stText+'</div></div>'+actions+'</div>';
   }).join('');
 }
 
@@ -810,8 +723,8 @@ function renderExercise(){
     return;
   }
   list.innerHTML = state.exerciseLogs.slice(0,30).map(function(log){
-    const whoName = state.users[log.user].name;
-    return '<div class="ex-item"><img src="'+log.thumb+'"><div class="meta"><div class="who">'+avatarIconHTML(log.user,16)+' '+whoName+(log.isVideo?'<span class="vid-badge">🎥影片</span>':'')+'</div><div class="note">'+(log.note?log.note:'（沒有留言）')+'</div></div></div>';
+    const whoName = state.users[log.user] ? state.users[log.user].name : '';
+    return '<div class="ex-item"><img src="'+log.thumb+'"><div class="meta"><div class="who">'+avatarIconHTML(log.user,16)+' '+escapeHtml(whoName)+(log.isVideo?'<span class="vid-badge">🎥影片</span>':'')+'</div><div class="note">'+(log.note?escapeHtml(log.note):'（沒有留言）')+'</div></div></div>';
   }).join('');
 }
 
@@ -849,7 +762,8 @@ function renderCards(){
   }
   area.innerHTML = me.cards.map(function(cid,idx){
     const c = CARD_LIB[cid];
-    return '<div class="card-item"><div class="ico">'+c.icon+'</div><div class="info"><b>'+c.name+'</b><span>'+c.desc+'</span></div><button class="btn sm" onclick="sendCard('+idx+')">送出</button></div>';
+    if(!c) return '';
+    return '<div class="card-item"><div class="ico">'+c.icon+'</div><div class="info"><b>'+escapeHtml(c.name)+'</b><span>'+escapeHtml(c.desc)+'</span></div><button class="btn sm" onclick="sendCard('+idx+')">送出</button></div>';
   }).join('');
 }
 
@@ -890,9 +804,10 @@ function videoFileToThumb(file, cb){
 /* ===================== 飲食 ===================== */
 window.reviewFood = async function(id, approve){
   const log = state.foodLogs.find(function(l){ return String(l.id)===String(id); });
-  if(!log) return;
+  if(!log || log.status!=='pending') return;
   log.status = approve ? 'approved' : 'rejected';
   state.users[log.user].dbsToday += approve ? 5 : -10;
+  touchUser(log.user);
   pushNotif(log.user, approve ? '你的餐點打卡被核準了，+5分！🎉' : '對方覺得這份量有點可疑，被退回了 -10分😼');
   await saveState(); renderBoard(); renderFood(); renderBell();
 };
@@ -903,7 +818,7 @@ document.getElementById('foodInput').addEventListener('change', function(e){
   e.target.value = '';
 });
 async function addFoodLog(thumb){
-  const id = Date.now()+Math.random();
+  const id = Date.now()+'-'+Math.random().toString(36).slice(2);
   state.foodLogs.unshift({id, user:currentUser, thumb, status:'pending', ts:Date.now()});
   pushNotif(other(currentUser), '📸 對方上傳了新的一餐，快去審查牆核準吧！');
   await saveState(); renderFood(); renderBell();
@@ -911,6 +826,8 @@ async function addFoodLog(thumb){
 }
 
 /* ===================== 運動打卡 ===================== */
+let exFile = {thumb:null, isVideo:false};
+let exSubmitting = false;
 document.getElementById('exInput').addEventListener('change', function(e){
   const file = e.target.files[0];
   if(!file) return;
@@ -925,10 +842,15 @@ document.getElementById('exInput').addEventListener('change', function(e){
   e.target.value = '';
 });
 document.getElementById('exSubmitBtn').addEventListener('click', async function(){
+  if(exSubmitting) return;
   if(!exFile.thumb){ showToast('請先拍照或選一段影片唷'); return; }
-  const note = document.getElementById('exNote').value.trim();
-  state.exerciseLogs.unshift({id:Date.now()+Math.random(), user:currentUser, thumb:exFile.thumb, isVideo:exFile.isVideo, note, ts:Date.now()});
+  exSubmitting = true;
+  const btn = document.getElementById('exSubmitBtn');
+  btn.disabled = true;
+  const note = document.getElementById('exNote').value.trim().slice(0,300);
+  state.exerciseLogs.unshift({id:Date.now()+'-'+Math.random().toString(36).slice(2), user:currentUser, thumb:exFile.thumb, isVideo:exFile.isVideo, note, ts:Date.now()});
   state.users[currentUser].dbsToday += 15;
+  touchUser(currentUser);
   pushNotif(other(currentUser), '💪 對方剛完成了一次運動打卡！'+(note?('留言：'+note):''));
   await saveState();
   exFile = {thumb:null, isVideo:false};
@@ -936,6 +858,8 @@ document.getElementById('exSubmitBtn').addEventListener('click', async function(
   document.getElementById('exNote').value='';
   renderExercise(); renderBoard(); renderBell();
   showToast('運動打卡送出，+15分！🎉');
+  btn.disabled = false;
+  exSubmitting = false;
 });
 document.getElementById('exRemindBtn').addEventListener('click', async function(){
   pushNotif(other(currentUser), '🔔 對方提醒你：今天運動了嗎？別忘了去打卡唷～');
@@ -950,10 +874,10 @@ window.openWeighinModal = function(){
   box.innerHTML = '<div style="font-size:40px;">⚖️</div>'
     +'<h2 class="display">今日體重打卡</h2>'
     +'<p>拍一張站上體重計的照片，誠實紀錄今天的體重！</p>'
-    +'<div class="field-row"><label>今天的體重 (kg)</label><input type="number" step="0.1" id="wiWeight" placeholder="例如 64.2"></div>'
+    +'<div class="field-row"><label>今天的體重 (kg，20~400之間)</label><input type="number" step="0.1" min="20" max="400" id="wiWeight" placeholder="例如 64.2"></div>'
     +'<div class="field-row"><label>體重計照片</label><input type="file" accept="image/*" id="wiPhoto"></div>'
     +'<img id="wiPreview" class="thumb-preview" style="display:none;">'
-    +'<button class="btn" style="margin-top:6px;" onclick="submitWeighin()">送出打卡</button>';
+    +'<button class="btn" style="margin-top:6px;" id="wiSubmitBtn">送出打卡</button>';
   overlay.style.display = 'flex';
   document.getElementById('wiPhoto').addEventListener('change', function(e){
     const file = e.target.files[0];
@@ -964,24 +888,32 @@ window.openWeighinModal = function(){
       document.getElementById('wiPreview').dataset.thumb = thumb;
     });
   });
+  document.getElementById('wiSubmitBtn').addEventListener('click', submitWeighin);
 };
-window.submitWeighin = async function(){
+let wiSubmitting = false;
+async function submitWeighin(){
+  if(wiSubmitting) return;
   const w = parseFloat(document.getElementById('wiWeight').value);
   const prev = document.getElementById('wiPreview');
   const thumb = prev.dataset.thumb;
-  if(isNaN(w)){ showToast('請輸入今天的體重'); return; }
+  if(!isValidWeight(w)){ showToast('請輸入合理的體重數字（20~400 kg）'); return; }
   if(!thumb){ showToast('請上傳一張體重計照片作為誠實證明'); return; }
+  wiSubmitting = true;
+  const btn = document.getElementById('wiSubmitBtn');
+  if(btn) btn.disabled = true;
   const u = currentUser;
-  state.weighIns.unshift({id:Date.now()+Math.random(), user:u, weight:w, thumb, ts:Date.now()});
+  state.weighIns.unshift({id:Date.now()+'-'+Math.random().toString(36).slice(2), user:u, weight:w, thumb, ts:Date.now()});
   state.users[u].currentWeight = w;
   if(state.users[u].startWeight==null) state.users[u].startWeight = w;
   state.users[u].dbsToday += 3;
+  touchUser(u);
   pushNotif(other(u), '⚖️ 對方完成了今日體重打卡！');
   document.getElementById('modalOverlay').style.display='none';
   await saveState();
   renderBoard();
   showToast('體重打卡完成，+3分！撲滿悄悄變化中～');
-};
+  wiSubmitting = false;
+}
 
 /* ===================== 體重目標設定（撲滿用） ===================== */
 window.openWeightModal = function(u){
@@ -1004,11 +936,12 @@ window.saveWeight = async function(){
   const s = parseFloat(document.getElementById('wInputStart').value);
   const c = parseFloat(document.getElementById('wInputCurrent').value);
   const g = parseFloat(document.getElementById('wInputGoal').value);
-  if(isNaN(s) || isNaN(c) || isNaN(g)){ showToast('請完整填入三個體重數字'); return; }
+  if(!isValidWeight(s) || !isValidWeight(c) || !isValidWeight(g)){ showToast('請輸入合理的體重數字（20~400 kg）'); return; }
   if(g >= s){ showToast('目標體重要比起始體重小才能開始減重撲滿唷'); return; }
   state.users[u].startWeight = s;
   state.users[u].currentWeight = c;
   state.users[u].goalWeight = g;
+  touchUser(u);
   document.getElementById('modalOverlay').style.display = 'none';
   await saveState();
   renderBoard();
@@ -1022,12 +955,12 @@ document.getElementById('setRewardBtn').addEventListener('click', function(){
   box.innerHTML = '<div style="font-size:40px;">🎖</div>'
     +'<h2 class="display">設定本週獲勝獎勵</h2>'
     +'<p>輸入這週贏家可以獲得的獎勵，週五結算時會公布！</p>'
-    +'<div class="field-row"><textarea id="rewardInput" rows="3" placeholder="例如：贏家可以指定輸家做一件事～">'+(state.weeklyReward||'')+'</textarea></div>'
+    +'<div class="field-row"><textarea id="rewardInput" maxlength="200" rows="3" placeholder="例如：贏家可以指定輸家做一件事～">'+escapeHtml(state.weeklyReward||'')+'</textarea></div>'
     +'<button class="btn" style="margin-top:6px;" onclick="saveReward()">儲存</button>';
   overlay.style.display = 'flex';
 });
 window.saveReward = async function(){
-  state.weeklyReward = document.getElementById('rewardInput').value.trim();
+  state.weeklyReward = document.getElementById('rewardInput').value.trim().slice(0,200);
   document.getElementById('modalOverlay').style.display='none';
   await saveState();
   renderBoard();
@@ -1041,7 +974,7 @@ document.getElementById('revealBtn').addEventListener('click', async function(){
   const lead = (pA.pct - pB.pct) > 5 ? 'A' : ((pB.pct - pA.pct) > 5 ? 'B' : null);
 
   const entry = {
-    id: Date.now(),
+    id: Date.now()+'-'+Math.random().toString(36).slice(2),
     endTs: Date.now(),
     scores: {A:A.dbsToday, B:B.dbsToday},
     weighInCount: {A:countBy('A',state.weighIns), B:countBy('B',state.weighIns)},
@@ -1056,7 +989,7 @@ document.getElementById('revealBtn').addEventListener('click', async function(){
 
   const overlay = document.getElementById('modalOverlay');
   const box = document.getElementById('modalBox');
-  const lineFor = function(d,p){ return p.hasData ? (d.currentWeight+'kg → 目標 '+d.goalWeight+'kg（達成 '+p.pct.toFixed(0)+'%）') : '尚未設定體重'; };
+  const lineFor = function(d,p){ return p.hasData ? (escapeHtml(d.currentWeight)+'kg → 目標 '+escapeHtml(d.goalWeight)+'kg（達成 '+p.pct.toFixed(0)+'%）') : '尚未設定體重'; };
   box.innerHTML = '<div class="egg">🥚</div>'
     +'<h2 class="display">本週開獎結果</h2>'
     +'<p>🐻 趴趴：'+lineFor(A,pA)+'<br>🐻 糰糰：'+lineFor(B,pB)+'</p>'
@@ -1064,13 +997,14 @@ document.getElementById('revealBtn').addEventListener('click', async function(){
       lead==='A' ? '本週「趴趴」獲勝！🐻✨' :
       lead==='B' ? '本週「糰糰」獲勝！🐻✨' : '本週兩人不相上下，勢均力敵！🤝'
     )+'</p>'
-    +'<p>🏆 獎勵：'+(state.weeklyReward || '（這週沒有設定獎勵）')+'</p>'
+    +'<p>🏆 獎勵：'+escapeHtml(state.weeklyReward || '（這週沒有設定獎勵）')+'</p>'
     +'<p style="font-size:11.5px;">本週紀錄已存入下方歷史，DBS、體重打卡、運動打卡將重新開始累計新的一週！</p>'
     +'<button class="btn" style="margin-top:8px;" onclick="document.getElementById(\'modalOverlay\').style.display=\'none\'">收下這份心動 💌</button>';
   overlay.style.display = 'flex';
 
   state.users.A.dbsToday = 0;
   state.users.B.dbsToday = 0;
+  touchUser('A'); touchUser('B');
   state.weighIns = [];
   state.exerciseLogs = [];
   state.foodLogs = [];
@@ -1083,6 +1017,7 @@ document.getElementById('revealBtn').addEventListener('click', async function(){
 document.getElementById('drinkBtn').addEventListener('click', async function(){
   state.water[currentUser]++;
   state.users[currentUser].dbsToday += 1;
+  touchUser(currentUser);
   await saveState(); renderHabit(); renderBoard();
   showToast('咕嘟咕嘟～盆栽喝到水了 💧');
 });
@@ -1102,6 +1037,7 @@ window.finishFasting = async function(){
   const elapsedH = (Date.now()-f.start)/3600000;
   if(elapsedH >= f.duration){
     state.users[currentUser].dbsToday += 10;
+    touchUser(currentUser);
     showToast('斷食完成！開飯動畫啟動 🍚 +10分');
     pushNotif(other(currentUser), '⏳ 對方完成了 '+f.duration+' 小時斷食挑戰！');
   } else {
@@ -1116,7 +1052,9 @@ window.sendCard = async function(idx){
   const me = state.users[currentUser];
   const cid = me.cards[idx];
   const c = CARD_LIB[cid];
+  if(!c) return;
   me.cards.splice(idx,1);
+  touchUser(currentUser);
   pushNotif(other(currentUser), c.icon+' 對方對你使用了「'+c.name+'」！'+c.desc);
   await saveState(); renderCards(); renderBell();
   showToast('已送出「'+c.name+'」給對方 '+c.icon);
@@ -1127,7 +1065,7 @@ document.getElementById('bellBtn').addEventListener('click', async function(){
   const list = document.getElementById('notifList');
   const mine = state.notifications.filter(function(n){ return n.to===currentUser; });
   list.innerHTML = mine.length ? mine.map(function(n){
-    return '<div class="notif-item">'+n.text+'<time>'+new Date(n.ts).toLocaleString('zh-TW',{hour12:false})+'</time></div>';
+    return '<div class="notif-item">'+escapeHtml(n.text)+'<time>'+escapeHtml(new Date(n.ts).toLocaleString('zh-TW',{hour12:false}))+'</time></div>';
   }).join('') : '<div style="text-align:center;color:var(--choco-soft);font-size:13px;padding:20px 0;">目前沒有新通知～</div>';
   document.getElementById('notifPanel').style.display = 'flex';
   mine.forEach(function(n){ n.read=true; });
@@ -1138,6 +1076,87 @@ document.getElementById('notifPanel').addEventListener('click', function(e){
 });
 document.getElementById('modalOverlay').addEventListener('click', function(e){
   if(e.target.id==='modalOverlay') e.target.style.display='none';
+});
+
+/* ===================== 設定（同步碼 / 備份） ===================== */
+document.getElementById('settingsBtn').addEventListener('click', function(){
+  const overlay = document.getElementById('modalOverlay');
+  const box = document.getElementById('modalBox');
+  box.innerHTML = '<div style="font-size:36px;">⚙️</div>'
+    +'<h2 class="display">設定與同步</h2>'
+    +'<div class="btn-row"><button class="btn sm" id="genCodeBtn">📋 產生同步碼</button><button class="btn sm ghost" id="pasteCodeBtn">📥 貼上對方的同步碼</button></div>'
+    +'<div id="codeArea" style="display:none;margin-top:10px;"></div>'
+    +'<div class="btn-row" style="margin-top:14px;">'
+    +'<button class="btn sm ghost" id="settingsExportBtn">📤 匯出備份檔</button>'
+    +'<button class="btn sm ghost" id="settingsImportBtn">📥 匯入備份檔</button>'
+    +'</div>'
+    +'<input type="file" accept="application/json" id="settingsImportInput" style="display:none;">'
+    +'<p style="font-size:11px;margin-top:12px;">同步碼用來跟對方手機對齊進度；備份檔則是萬一手機資料遺失時可以救回。</p>'
+    +'<button class="btn ghost sm" id="settingsResetBtn" style="margin-top:8px;">🗑 清除本機資料重新開始</button>';
+  overlay.style.display = 'flex';
+
+  document.getElementById('genCodeBtn').addEventListener('click', function(){
+    const code = generateSyncCode();
+    const area = document.getElementById('codeArea');
+    area.style.display = 'block';
+    area.innerHTML = '<div class="code-box" id="syncCodeBox">'+escapeHtml(code)+'</div><button class="btn sm" id="copyCodeBtn" style="margin-top:8px;width:100%;">📋 複製這段同步碼</button>';
+    document.getElementById('copyCodeBtn').addEventListener('click', function(){
+      if(navigator.clipboard){ navigator.clipboard.writeText(code).then(function(){ showToast('已複製！傳給對方貼上即可同步'); }); }
+    });
+  });
+  document.getElementById('pasteCodeBtn').addEventListener('click', function(){
+    const area = document.getElementById('codeArea');
+    area.style.display = 'block';
+    area.innerHTML = '<div class="field-row"><textarea id="pasteCodeInput" rows="4" placeholder="把對方傳給你的同步碼貼在這裡"></textarea></div>'
+      +'<button class="btn sm" id="applyCodeBtn" style="width:100%;">合併同步</button>';
+    document.getElementById('applyCodeBtn').addEventListener('click', async function(){
+      const code = document.getElementById('pasteCodeInput').value;
+      try{
+        applySyncCode(code);
+        await saveState();
+        renderAll();
+        document.getElementById('modalOverlay').style.display = 'none';
+        showToast('已跟對方同步完成！🎉');
+      }catch(err){
+        showToast(err.message || '同步碼格式不對');
+      }
+    });
+  });
+  document.getElementById('settingsExportBtn').addEventListener('click', function(){
+    const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = '趴趴熊大作戰備份_'+new Date().toISOString().slice(0,10)+'.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+  document.getElementById('settingsImportBtn').addEventListener('click', function(){
+    document.getElementById('settingsImportInput').click();
+  });
+  document.getElementById('settingsImportInput').addEventListener('change', function(e){
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = async function(ev){
+      try{
+        const imported = ensureStateShape(JSON.parse(ev.target.result));
+        state = mergeStates(state, imported);
+        await saveState();
+        renderAll();
+        document.getElementById('modalOverlay').style.display = 'none';
+        showToast('備份已匯入並合併！');
+      }catch(err){ showToast('這個檔案讀不懂，請確認是不是本App匯出的備份檔'); }
+    };
+    reader.readAsText(file);
+  });
+  document.getElementById('settingsResetBtn').addEventListener('click', async function(){
+    if(!confirm('確定要清除這支手機上的所有紀錄嗎？這個動作無法復原。')) return;
+    state = DEFAULT_STATE();
+    await saveState();
+    renderAll();
+    document.getElementById('modalOverlay').style.display = 'none';
+    showToast('已清除，重新開始！');
+  });
 });
 
 /* ===================== Nav / Role ===================== */
@@ -1157,7 +1176,7 @@ document.getElementById('roleSwitch').addEventListener('click', function(e){
 });
 
 /* ===================== 自訂角色：自動去背編輯器 ===================== */
-let avatarOriginalCanvas = null; // 離屏canvas，存放原始(未去背)圖片
+let avatarOriginalCanvas = null;
 let avatarBrushMode = 'erase';
 
 function renderAvatarTab(){
@@ -1165,7 +1184,7 @@ function renderAvatarTab(){
   const slot = function(u, data){
     const av = data.avatar;
     const img = av ? '<img src="'+av+'" style="width:80px;height:80px;object-fit:contain;">' : bearSVG(u,'happy');
-    return '<div class="piggy-slot"><div class="pig-name">'+data.name+(u===currentUser?'（你）':'')+'</div>'
+    return '<div class="piggy-slot"><div class="pig-name">'+escapeHtml(data.name)+(u===currentUser?'（你）':'')+'</div>'
       +'<div class="pig-wrap" style="background:repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0/16px 16px;">'+img+'</div></div>';
   };
   document.getElementById('avatarPreviewRow').innerHTML = slot('A',A) + slot('B',B);
@@ -1208,7 +1227,6 @@ function autoCutout(){
   const imgData = ctx.getImageData(0,0,w,h);
   const data = imgData.data;
 
-  // 取四周邊界像素平均色當作背景參考色
   let rs=0,gs=0,bs=0,cnt=0;
   function sample(x,y){ const i=(y*w+x)*4; rs+=data[i]; gs+=data[i+1]; bs+=data[i+2]; cnt++; }
   for(let x=0;x<w;x++){ sample(x,0); sample(x,h-1); }
@@ -1249,7 +1267,6 @@ document.getElementById('cancelAvatarBtn').addEventListener('click', function(){
   document.getElementById('avatarEditorWrap').style.display = 'none';
   avatarOriginalCanvas = null;
 });
-
 document.getElementById('eraseModeBtn').addEventListener('click', function(){
   avatarBrushMode='erase';
   document.getElementById('eraseModeBtn').classList.add('mode-active');
@@ -1296,6 +1313,7 @@ document.getElementById('saveAvatarBtn').addEventListener('click', async functio
   const canvas = document.getElementById('avatarCanvas');
   const dataUrl = canvas.toDataURL('image/png');
   state.users[currentUser].avatar = dataUrl;
+  touchUser(currentUser);
   await saveState();
   document.getElementById('avatarEditorWrap').style.display = 'none';
   avatarOriginalCanvas = null;
@@ -1304,135 +1322,15 @@ document.getElementById('saveAvatarBtn').addEventListener('click', async functio
 });
 document.getElementById('removeAvatarBtn').addEventListener('click', async function(){
   delete state.users[currentUser].avatar;
+  touchUser(currentUser);
   await saveState();
   renderAll();
   showToast('已改回預設熊熊');
 });
 
-/* ===================== 配對流程 ===================== */
-document.getElementById('pairCreateBtn').addEventListener('click', async function(){
-  document.getElementById('pairErrorBox').style.display = 'none';
-  const init = DEFAULT_STATE(); init.updatedAt = Date.now();
-  try{
-    const {userId,itemId} = await remoteCreate(init);
-    remoteUserId = userId; remoteItemId = itemId;
-    savePairToLocal(userId, itemId);
-    state = init;
-    document.getElementById('pairCodeDisplay').textContent = userId+'.'+itemId;
-    document.getElementById('pairResultBox').style.display = 'block';
-  }catch(e){
-    const box = document.getElementById('pairErrorBox');
-    box.style.display = 'block';
-    box.textContent = '建立失敗，詳細原因：\n'+e.message+'\n\n請把這段文字截圖給我，我可以幫你看是什麼問題。';
-  }
-});
-document.getElementById('pairTestBtn').addEventListener('click', testConnectivity);
-document.getElementById('pairJoinShowBtn').addEventListener('click', function(){
-  document.getElementById('pairJoinBox').style.display = 'block';
-});
-document.getElementById('pairJoinBtn').addEventListener('click', async function(){
-  document.getElementById('pairErrorBox').style.display = 'none';
-  const code = document.getElementById('pairCodeInput').value.trim();
-  const dot = code.indexOf('.');
-  if(dot<0){ showToast('配對碼格式不對，要包含一個小數點'); return; }
-  const userId = code.slice(0,dot), itemId = code.slice(dot+1);
-  try{
-    const remote = await remoteGet(userId, itemId);
-    remoteUserId = userId; remoteItemId = itemId;
-    savePairToLocal(userId, itemId);
-    state = remote;
-    ensureStateShape();
-    enterApp();
-  }catch(e){
-    const box = document.getElementById('pairErrorBox');
-    box.style.display = 'block';
-    box.textContent = '加入失敗，詳細原因：\n'+e.message+'\n\n請確認配對碼有沒有複製完整，或把這段文字截圖給我。';
-  }
-});
-document.getElementById('pairCopyBtn').addEventListener('click', function(){
-  const text = document.getElementById('pairCodeDisplay').textContent;
-  if(navigator.clipboard){ navigator.clipboard.writeText(text).then(function(){ showToast('已複製配對碼！'); }); }
-});
-document.getElementById('pairContinueBtn').addEventListener('click', function(){ enterApp(); });
-
-function enterApp(){
-  document.getElementById('pairScreen').style.display = 'none';
-  renderAll();
-  setInterval(pollRemote, 9000);
-}
-
-/* ===================== 設定（配對碼/手動同步/備份） ===================== */
-document.getElementById('settingsBtn').addEventListener('click', function(){
-  const overlay = document.getElementById('modalOverlay');
-  const box = document.getElementById('modalBox');
-  const code = remoteUserId ? (remoteUserId+'.'+remoteItemId) : '尚未配對';
-  box.innerHTML = '<div style="font-size:36px;">⚙️</div>'
-    +'<h2 class="display">連線與備份設定</h2>'
-    +'<div class="field-row"><label>目前配對碼（傳給另一半用）</label>'
-    +'<div style="font-family:monospace;font-weight:700;background:var(--cream);padding:8px;border-radius:10px;word-break:break-all;">'+code+'</div></div>'
-    +'<div class="btn-row" style="margin-top:10px;">'
-    +'<button class="btn sm" id="settingsCopyBtn">📋 複製配對碼</button>'
-    +'<button class="btn sm ghost" id="settingsSyncBtn">🔄 立即同步</button>'
-    +'</div>'
-    +'<div class="btn-row" style="margin-top:10px;">'
-    +'<button class="btn sm ghost" id="settingsExportBtn">📤 匯出備份檔</button>'
-    +'<button class="btn sm ghost" id="settingsImportBtn">📥 匯入備份檔</button>'
-    +'</div>'
-    +'<input type="file" accept="application/json" id="settingsImportInput" style="display:none;">'
-    +'<p style="font-size:11px;margin-top:12px;">備份檔可以在雲端服務萬一失效時，把資料復原回來。</p>'
-    +'<button class="btn ghost sm" id="settingsResetBtn" style="margin-top:8px;">🔌 解除配對（換到別的空間）</button>';
-  overlay.style.display = 'flex';
-
-  document.getElementById('settingsCopyBtn').addEventListener('click', function(){
-    if(navigator.clipboard){ navigator.clipboard.writeText(code).then(function(){ showToast('已複製配對碼！'); }); }
-  });
-  document.getElementById('settingsSyncBtn').addEventListener('click', async function(){
-    await pollRemote();
-    showToast('已嘗試同步最新資料');
-  });
-  document.getElementById('settingsExportBtn').addEventListener('click', function(){
-    const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = '趴趴熊大作戰備份_'+new Date().toISOString().slice(0,10)+'.json';
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  });
-  document.getElementById('settingsImportBtn').addEventListener('click', function(){
-    document.getElementById('settingsImportInput').click();
-  });
-  document.getElementById('settingsImportInput').addEventListener('change', function(e){
-    const file = e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = async function(ev){
-      try{
-        const imported = JSON.parse(ev.target.result);
-        state = imported;
-        ensureStateShape();
-        await saveState();
-        renderAll();
-        document.getElementById('modalOverlay').style.display = 'none';
-        showToast('備份已匯入並同步給對方！');
-      }catch(err){ showToast('這個檔案讀不懂，請確認是不是本App匯出的備份檔'); }
-    };
-    reader.readAsText(file);
-  });
-  document.getElementById('settingsResetBtn').addEventListener('click', function(){
-    clearPairFromLocal();
-    location.reload();
-  });
-});
-
 (async function init(){
-  const pair = loadPairFromLocal();
-  if(pair && pair.u && pair.i){
-    remoteUserId = pair.u; remoteItemId = pair.i;
-    await loadState();
-    enterApp();
-  } else {
-    document.getElementById('pairScreen').style.display = 'flex';
-  }
+  await loadState();
+  renderAll();
   setInterval(function(){ if(state) renderHabit(); }, 30000);
 })();
 </script>
