@@ -471,13 +471,14 @@ async function testConnectivity(){
   box.textContent = '測試中...';
   try{
     const r = await fetch('https://api.jsonstorage.net/v1/json', {
-      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ping:true})
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({hello:'world'})
     });
+    const bodyText = await r.text().catch(function(){ return '(無法讀取回應內容)'; });
     if(r.ok){
-      box.textContent = '✅ 連線正常（HTTP '+r.status+'），可以放心建立空間';
+      box.textContent = '✅ 連線正常（HTTP '+r.status+'），可以放心建立空間\n伺服器回應：'+bodyText;
       box.style.color = '#3D9270';
     } else {
-      box.textContent = '⚠️ 連到伺服器了，但回應異常：HTTP '+r.status;
+      box.textContent = '⚠️ 連到伺服器了，但回應異常：HTTP '+r.status+'\n伺服器回應內容：\n'+bodyText;
       box.style.color = '#C9748A';
     }
   }catch(e){
